@@ -26,7 +26,7 @@ class _TaskButtonState extends State<TaskButton> {
           icon: Image.asset('images/mtg.png'),
           iconSize: 310.h,
           onPressed: () {
-            setTogglTask(MtgTime);
+            setTogglTask(MTG);
           },
         ),
         SizedBox(
@@ -46,7 +46,7 @@ class _TaskButtonState extends State<TaskButton> {
           icon: Image.asset('images/break.png'),
           iconSize: 310.h,
           onPressed: () {
-            setTogglTask(BreakTime);
+            setTogglTask(SBRK);
           },
         ),
       ],

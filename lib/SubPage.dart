@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pomodoro_ios_app/Header.dart';
 
 import 'Header.dart';
-import 'AsanaTaskList.dart';
 
 class SubPage extends StatelessWidget {
   const SubPage({Key? key}) : super(key: key);
@@ -14,7 +13,6 @@ class SubPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const <Widget>[
           Header('pop'),
-          Flexible(child: AsanaTaskList())
         ],
       ),
       backgroundColor: Colors.grey[800],

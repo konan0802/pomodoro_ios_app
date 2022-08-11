@@ -40,6 +40,7 @@ class _HeaderState extends State<Header> {
                 fontWeight: FontWeight.w600,
                 color: Colors.white),
           ),
+          /*
           IconButton(
             icon: Image.asset('images/' + widget._navType + '.png'),
             iconSize: 36.w,
@@ -56,6 +57,7 @@ class _HeaderState extends State<Header> {
               }
             },
           ),
+          */
         ],
       ),
     );
