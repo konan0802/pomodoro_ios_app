@@ -46,55 +46,57 @@ class _TaskInfoState extends State<TaskInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 640.w,
-      height: 530.h,
-      padding: EdgeInsets.only(top: 60.h, left: 15.w, right: 20.w),
-      margin: EdgeInsets.only(top: 35.h, bottom: 28.h),
-      decoration: BoxDecoration(
-        color: Color.fromARGB(
-          255,
-          _taskInfoCllorR,
-          _taskInfoCllorG,
-          _taskInfoCllorB,
+    return Center(
+      child: Container(
+        width: double.infinity,
+        height: 530.h,
+        padding: EdgeInsets.only(top: 50.h, left: 15.w, right: 20.w),
+        margin: EdgeInsets.only(top: 120.h, left: 25.w),
+        decoration: BoxDecoration(
+          color: Color.fromARGB(
+            255,
+            _taskInfoCllorR,
+            _taskInfoCllorG,
+            _taskInfoCllorB,
+          ),
+          border: Border.all(
+            color: Colors.white,
+            width: 3.0.w,
+          ),
+          borderRadius: BorderRadius.circular(10),
         ),
-        border: Border.all(
-          color: Colors.white,
-          width: 3.0.w,
-        ),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 74.sp,
-            padding: EdgeInsets.only(left: 8.w),
-            child: Text(
-              _taskName,
-              style: TextStyle(
-                fontSize: 57.sp,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: 74.sp,
+              padding: EdgeInsets.only(left: 8.w),
+              child: Text(
+                _taskName,
+                style: TextStyle(
+                  fontSize: 57.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
             ),
-          ),
-          SizedBox(
-            height: 60.h,
-          ),
-          Container(
-            width: 355.w,
-            margin: EdgeInsets.only(left: 58.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TaskTime(_taskTimeMinutes, _taskTimeSeconds),
-              ],
+            SizedBox(
+              height: 60.h,
             ),
-          ),
-        ],
+            Container(
+              width: 355.w,
+              margin: EdgeInsets.only(left: 58.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TaskTime(_taskTimeMinutes, _taskTimeSeconds),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -141,10 +143,13 @@ class _TaskInfoState extends State<TaskInfo> {
 
   /*
     アラート条件
-    ・タスクなし:  アラート
-    ・MTG:   アラートなし
-    ・SBRK: 60分以上でアラート
-    ・上記以外:    25分以上でアラート
+    ・NT      : アラート
+    ・WORK    : 25分以上でアラート
+    ・SBRK    : 5分以上でアラート
+    ・LBRK    : 10分以上でアラート
+    ・MTG     : アラートなし
+    ・LUNCH   : 60分以上でアラート
+    ・上記以外 : デフォルトカラー
   */
   void manageTaskInfoColor() {
     if (_taskName == NT) {
@@ -155,7 +160,33 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == SBRK && _taskTime >= 3600) {
+    } else if (_taskName == WORK && _taskTime >= 1500) {
+      if (mounted) {
+        setState(() {
+          _taskInfoCllorR = 191;
+          _taskInfoCllorG = 67;
+          _taskInfoCllorB = 67;
+        });
+      }
+    } else if (_taskName == SBRK && _taskTime >= 300) {
+      if (mounted) {
+        setState(() {
+          _taskInfoCllorR = 191;
+          _taskInfoCllorG = 67;
+          _taskInfoCllorB = 67;
+        });
+      }
+    } else if (_taskName == LBRK && _taskTime >= 600) {
+      if (mounted) {
+        setState(() {
+          _taskInfoCllorR = 191;
+          _taskInfoCllorG = 67;
+          _taskInfoCllorB = 67;
+        });
+      }
+    } else if (_taskName == MTG && _taskTime >= 300) {
+      // アラートなし
+    } else if (_taskName == LUNCH && _taskTime >= 3600) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
@@ -173,4 +204,4 @@ class _TaskInfoState extends State<TaskInfo> {
       }
     }
   }
-
+}

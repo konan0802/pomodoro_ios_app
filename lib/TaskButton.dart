@@ -19,37 +19,57 @@ class TaskButton extends StatefulWidget {
 class _TaskButtonState extends State<TaskButton> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          icon: Image.asset('images/mtg.png'),
-          iconSize: 310.h,
-          onPressed: () {
-            setTogglTask(MTG);
-          },
-        ),
-        SizedBox(
-          width: 80.w,
-        ),
-        IconButton(
-          icon: Image.asset('images/other.png'),
-          iconSize: 310.h,
-          onPressed: () {
-            setTogglTask(OtherTime);
-          },
-        ),
-        SizedBox(
-          width: 80.w,
-        ),
-        IconButton(
-          icon: Image.asset('images/break.png'),
-          iconSize: 310.h,
-          onPressed: () {
-            setTogglTask(SBRK);
-          },
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.only(top: 50.h, left: 15.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: Image.asset('images/work.png'),
+                iconSize: 310.h,
+                onPressed: () {
+                  setTogglTask(WORK);
+                },
+              ),
+              SizedBox(
+                width: 150.w,
+              ),
+              IconButton(
+                icon: Image.asset('images/five_brk.png'),
+                iconSize: 310.h,
+                onPressed: () {
+                  setTogglTask(SBRK);
+                },
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: Image.asset('images/mtg.png'),
+                iconSize: 310.h,
+                onPressed: () {
+                  setTogglTask(MTG);
+                },
+              ),
+              SizedBox(
+                width: 150.w,
+              ),
+              IconButton(
+                icon: Image.asset('images/ten_brk.png'),
+                iconSize: 310.h,
+                onPressed: () {
+                  setTogglTask(LBRK);
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 

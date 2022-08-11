@@ -18,13 +18,18 @@ class TopPage extends StatelessWidget {
           const Header('push'),
           // タスク表示
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: const <Widget>[
-              Center(
+              Expanded(
+                flex: 5,
                 child: TaskInfo(),
               ),
-              // タスクボタン
-              TaskButton(),
+              Expanded(
+                flex: 5,
+                child: TaskButton(),
+              ),
             ],
           )
         ],
