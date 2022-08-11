@@ -90,7 +90,7 @@ class _TaskInfoState extends State<TaskInfo> {
             ),
             Container(
               width: 355.w,
-              margin: EdgeInsets.only(left: 58.w),
+              margin: EdgeInsets.only(left: 20.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

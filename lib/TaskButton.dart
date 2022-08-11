@@ -20,7 +20,7 @@ class _TaskButtonState extends State<TaskButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 50.h, left: 15.w),
+      margin: EdgeInsets.only(top: 90.h, left: 15.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
