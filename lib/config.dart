@@ -4,4 +4,3 @@ const SBRK = 'SBRK';
 const LBRK = 'LBRK';
 const MTG = 'MTG';
 const LUNCH = 'LUNCH';
-const OtherTime = 'other';

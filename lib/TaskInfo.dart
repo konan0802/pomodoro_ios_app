@@ -25,6 +25,9 @@ class _TaskInfoState extends State<TaskInfo> {
   String _taskTimeMinutes = '';
   String _taskTimeSeconds = '';
 
+  // 規定通知回数
+  int _lineNotifyNum = 5;
+
   int _taskInfoCllorR = 66;
   int _taskInfoCllorG = 66;
   int _taskInfoCllorB = 66;
@@ -141,6 +144,25 @@ class _TaskInfoState extends State<TaskInfo> {
     }
   }
 
+  Future<void> sendLineMessage() async {
+    String url = 'https://api.line.me/v2/bot/message/push';
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + dotenv.env['CHANNEL_TOKEN']!
+    };
+    String body = json.encode({
+      "to": "Uf6dc052d62c879a4e6befd2fa43dd742",
+      "messages": [
+        {"type": "text", "text": _taskName + ' 終了です!'}
+      ]
+    });
+    // 規定通知回数を下回ったら通知の停止
+    if (_lineNotifyNum > 0) {
+      await http.post(Uri.parse(url), headers: headers, body: body);
+      _lineNotifyNum--;
+    }
+  }
+
   /*
     アラート条件
     ・NT      : アラート
@@ -168,6 +190,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
+      sendLineMessage();
     } else if (_taskName == SBRK && _taskTime >= 300) {
       if (mounted) {
         setState(() {
@@ -176,6 +199,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
+      sendLineMessage();
     } else if (_taskName == LBRK && _taskTime >= 600) {
       if (mounted) {
         setState(() {
@@ -184,6 +208,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
+      sendLineMessage();
     } else if (_taskName == MTG && _taskTime >= 300) {
       // アラートなし
     } else if (_taskName == LUNCH && _taskTime >= 3600) {
@@ -194,6 +219,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
+      sendLineMessage();
     } else {
       if (mounted) {
         setState(() {
@@ -202,6 +228,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 66;
         });
       }
+      _lineNotifyNum = 5;
     }
   }
 }
