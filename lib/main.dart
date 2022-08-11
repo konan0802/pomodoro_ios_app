@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'TopPage.dart';
 
-void main() async {
+Future main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight])
@@ -14,7 +14,7 @@ void main() async {
       ScreenUtilInit(
         designSize: const Size(744.0, 1133.0),
         minTextAdapt: true,
-        builder: () => const MyApp(),
+        builder: (BuildContext context, child) => const MyApp(),
       ),
     );
   });
