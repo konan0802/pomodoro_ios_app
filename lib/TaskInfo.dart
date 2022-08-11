@@ -73,11 +73,11 @@ class _TaskInfoState extends State<TaskInfo> {
           children: <Widget>[
             Container(
               height: 74.sp,
-              padding: EdgeInsets.only(left: 8.w),
+              padding: EdgeInsets.only(top: 6.h, left: 10.w),
               child: Text(
                 _taskName,
                 style: TextStyle(
-                  fontSize: 57.sp,
+                  fontSize: 70.sp,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
@@ -90,7 +90,7 @@ class _TaskInfoState extends State<TaskInfo> {
             ),
             Container(
               width: 355.w,
-              margin: EdgeInsets.only(left: 20.w),
+              margin: EdgeInsets.only(left: 15.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
