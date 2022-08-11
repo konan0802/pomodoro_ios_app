@@ -38,7 +38,7 @@ class _TaskButtonState extends State<TaskButton> {
                 width: 150.w,
               ),
               IconButton(
-                icon: Image.asset('images/five_brk.png'),
+                icon: Image.asset('images/sbrk.png'),
                 iconSize: 310.h,
                 onPressed: () {
                   setTogglTask(SBRK);
@@ -60,7 +60,7 @@ class _TaskButtonState extends State<TaskButton> {
                 width: 150.w,
               ),
               IconButton(
-                icon: Image.asset('images/ten_brk.png'),
+                icon: Image.asset('images/lbrk.png'),
                 iconSize: 310.h,
                 onPressed: () {
                   setTogglTask(LBRK);
