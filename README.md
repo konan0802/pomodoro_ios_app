@@ -1,7 +1,7 @@
 # Pomodoro iOS App
 「[pomodoro-linebot](https://github.com/konan0802/pomodoro-linebot)」をGUI上で操作できる様にするためにiOSアプリ化
 
-![8co2c-1ea9a](./anime.gif)
+<img src="./anime.gif" width="600">
 
 ## 機能
 * アプリから下記の”状態”の設定が可能で、その残り時間が確認できる
