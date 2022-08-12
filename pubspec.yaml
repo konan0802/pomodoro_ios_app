@@ -85,7 +85,6 @@ flutter:
     - images/pop.png
     - images/sbrk.png
     - images/push.png
-    - images/ten_brk.png
     - images/work.png
     - .env
 
