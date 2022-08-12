@@ -20,7 +20,7 @@ class _TaskButtonState extends State<TaskButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 90.h, left: 15.w),
+      margin: EdgeInsets.only(top: 90.h, left: 8.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -29,7 +29,7 @@ class _TaskButtonState extends State<TaskButton> {
             children: [
               IconButton(
                 icon: Image.asset('images/work.png'),
-                iconSize: 310.h,
+                iconSize: 300.h,
                 onPressed: () {
                   setTogglTask(WORK);
                 },
@@ -39,7 +39,7 @@ class _TaskButtonState extends State<TaskButton> {
               ),
               IconButton(
                 icon: Image.asset('images/sbrk.png'),
-                iconSize: 310.h,
+                iconSize: 300.h,
                 onPressed: () {
                   setTogglTask(SBRK);
                 },
@@ -51,7 +51,7 @@ class _TaskButtonState extends State<TaskButton> {
             children: [
               IconButton(
                 icon: Image.asset('images/mtg.png'),
-                iconSize: 310.h,
+                iconSize: 300.h,
                 onPressed: () {
                   setTogglTask(MTG);
                 },
@@ -61,7 +61,7 @@ class _TaskButtonState extends State<TaskButton> {
               ),
               IconButton(
                 icon: Image.asset('images/lbrk.png'),
-                iconSize: 310.h,
+                iconSize: 300.h,
                 onPressed: () {
                   setTogglTask(LBRK);
                 },
