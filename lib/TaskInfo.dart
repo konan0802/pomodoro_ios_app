@@ -144,9 +144,9 @@ class _TaskInfoState extends State<TaskInfo> {
   /*
     アラート条件
     ・NT      : アラート
-    ・WORK    : 25分以上でアラート
-    ・SBRK    : 5分以上でアラート
-    ・LBRK    : 10分以上でアラート
+    ・WORK    : 45分以上でアラート
+    ・SBRK    : 10分以上でアラート
+    ・LBRK    : 30分以上でアラート
     ・上記以外 : デフォルトカラー
   */
   void manageTaskInfoColor() {
@@ -158,7 +158,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == WORK && _taskTime >= 1500) {
+    } else if (_taskName == WORK && _taskTime >= 2700) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
@@ -166,7 +166,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == SBRK && _taskTime >= 300) {
+    } else if (_taskName == SBRK && _taskTime >= 600) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
@@ -174,7 +174,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == LBRK && _taskTime >= 600) {
+    } else if (_taskName == LBRK && _taskTime >= 1800) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
