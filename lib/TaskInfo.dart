@@ -51,7 +51,7 @@ class _TaskInfoState extends State<TaskInfo> {
         width: double.infinity,
         height: 530.h,
         padding: EdgeInsets.only(top: 50.h, left: 15.w, right: 20.w),
-        margin: EdgeInsets.only(top: 120.h, left: 25.w),
+        margin: EdgeInsets.only(left: 25.w),
         decoration: BoxDecoration(
           color: Color.fromARGB(
             255,
@@ -158,7 +158,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == WORK && _taskTime >= 2700) {
+    } else if (_taskName == WORK && _taskTime >= 1500) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
@@ -166,7 +166,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == SBRK && _taskTime >= 600) {
+    } else if (_taskName == SBRK && _taskTime >= 300) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;

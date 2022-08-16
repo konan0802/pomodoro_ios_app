@@ -20,7 +20,7 @@ class _TaskButtonState extends State<TaskButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 90.h, left: 4.w),
+      margin: EdgeInsets.only(top: 0.h, left: 4.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -29,19 +29,29 @@ class _TaskButtonState extends State<TaskButton> {
             children: [
               IconButton(
                 icon: Image.asset('images/work.png'),
-                iconSize: 300.h,
+                iconSize: 270.h,
                 onPressed: () {
                   setTogglTask(WORK);
                 },
               ),
               SizedBox(
-                width: 150.w,
+                width: 100.w,
               ),
               IconButton(
-                icon: Image.asset('images/sbrk.png'),
-                iconSize: 300.h,
+                icon: Image.asset('images/etc.png'),
+                iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(SBRK);
+                  setTogglTask(ETC);
+                },
+              ),
+              SizedBox(
+                width: 100.w,
+              ),
+              IconButton(
+                icon: Image.asset('images/mtg.png'),
+                iconSize: 270.h,
+                onPressed: () {
+                  setTogglTask(MTG);
                 },
               ),
             ],
@@ -50,20 +60,30 @@ class _TaskButtonState extends State<TaskButton> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                icon: Image.asset('images/mtg.png'),
-                iconSize: 300.h,
+                icon: Image.asset('images/sbrk.png'),
+                iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(MTG);
+                  setTogglTask(SBRK);
                 },
               ),
               SizedBox(
-                width: 150.w,
+                width: 100.w,
               ),
               IconButton(
                 icon: Image.asset('images/lbrk.png'),
-                iconSize: 300.h,
+                iconSize: 270.h,
                 onPressed: () {
                   setTogglTask(LBRK);
+                },
+              ),
+              SizedBox(
+                width: 100.w,
+              ),
+              IconButton(
+                icon: Image.asset('images/done.png'),
+                iconSize: 270.h,
+                onPressed: () {
+                  setTogglTask(DONE);
                 },
               ),
             ],

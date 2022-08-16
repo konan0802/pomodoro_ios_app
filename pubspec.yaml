@@ -75,6 +75,7 @@ flutter:
   assets:
     - images/break.png
     - images/done.png
+    - images/etc.png
     - images/icon_round.png
     - images/lbrk.png
     - images/lock.png
