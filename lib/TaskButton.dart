@@ -39,11 +39,11 @@ class _TaskButtonState extends State<TaskButton> {
                 width: 100.w,
               ),
               IconButton(
-                icon: Image.asset('images/mtg.png'),
+                icon: Image.asset('images/sbrk.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(
-                      STATE_TASK['MTG'].toString(), STATE_PJT['MTG']!.toInt());
+                  setTogglTask(STATE_TASK['SBRK'].toString(),
+                      STATE_PJT['SBRK']!.toInt());
                 },
               ),
             ],
@@ -52,11 +52,11 @@ class _TaskButtonState extends State<TaskButton> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                icon: Image.asset('images/sbrk.png'),
+                icon: Image.asset('images/mtg.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(STATE_TASK['SBRK'].toString(),
-                      STATE_PJT['SBRK']!.toInt());
+                  setTogglTask(
+                      STATE_TASK['MTG'].toString(), STATE_PJT['MTG']!.toInt());
                 },
               ),
               SizedBox(
