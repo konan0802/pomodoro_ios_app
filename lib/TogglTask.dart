@@ -1,16 +1,19 @@
 class TogglTask {
   final String description;
   final String start;
+  final int pid;
 
   const TogglTask({
     required this.description,
     required this.start,
+    required this.pid,
   });
 
   factory TogglTask.fromJson(Map<String, dynamic> json) {
     return TogglTask(
       description: json['description'],
       start: json['start'],
+      pid: json['pid'],
     );
   }
 }

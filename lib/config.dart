@@ -1,9 +1,28 @@
 const NT = '[No current task]';
 
-const WORK = 'WORK';
-const MTG = 'MTG';
-const ETC = 'ETC';
+const STATE_TASK = {
+  'WORK': '(Task Name)',
+  'MTG': 'MTG',
+  'SBRK': 'SBRK',
+  'LBRK': 'LBRK',
+};
 
-const SBRK = 'SBRK';
-const LBRK = 'LBRK';
-const DONE = 'DONE';
+const PJT_ID = {
+  'WORK': 184292335,
+  'MTG': 184292345,
+  'BRK': 184292339,
+};
+
+const STATE_PJT = {
+  'WORK': 184292335, //WORK
+  'MTG': 184292345, //MTG
+  'SBRK': 184292339, //BRK
+  'LBRK': 184292339, //BRK
+};
+
+const STATE_TIME = {
+  'WORK': 1500,
+  'MTG': 1800,
+  'SBRK': 300,
+  'LBRK': 900,
+};

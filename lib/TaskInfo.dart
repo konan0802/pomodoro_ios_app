@@ -21,6 +21,7 @@ class TaskInfo extends StatefulWidget {
 class _TaskInfoState extends State<TaskInfo> {
   /// タイマー文字列用
   String _taskName = '';
+  int _pjtId = 0;
   int _taskTime = 0;
   String _taskTimeMinutes = '';
   String _taskTimeSeconds = '';
@@ -51,7 +52,7 @@ class _TaskInfoState extends State<TaskInfo> {
         width: double.infinity,
         height: 530.h,
         padding: EdgeInsets.only(top: 50.h, left: 15.w, right: 20.w),
-        margin: EdgeInsets.only(left: 25.w),
+        margin: EdgeInsets.only(top: 130.h, left: 25.w),
         decoration: BoxDecoration(
           color: Color.fromARGB(
             255,
@@ -128,6 +129,7 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskTimeMinutes = durationM == null ? "?" : durationM.toString();
           _taskTimeSeconds = durationS == null ? "?" : durationS.toString();
           _taskName = togglTask.description;
+          _pjtId = togglTask.pid;
         });
       }
     } catch (e) {
@@ -143,11 +145,13 @@ class _TaskInfoState extends State<TaskInfo> {
 
   /*
     アラート条件
-    ・NT      : アラート
-    ・WORK    : 45分以上でアラート
-    ・SBRK    : 10分以上でアラート
-    ・LBRK    : 30分以上でアラート
-    ・上記以外 : デフォルトカラー
+    ・NT         : アラート
+    ・WORK       : 25分以上でアラート
+    ・MTG        : 30分以上でアラート
+    ・FIVE_BRK   : 5分以上でアラート
+    ・TEN_BRK    : 10分以上でアラート
+    ・THIRTY_BRK : 30分以上でアラート
+    ・上記以外 : デフォルト
   */
   void manageTaskInfoColor() {
     if (_taskName == NT) {
@@ -158,7 +162,8 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == WORK && _taskTime >= 1500) {
+    } else if (_pjtId == STATE_PJT['WORK'] &&
+        _taskTime >= STATE_TIME['WORK']!.toInt()) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
@@ -166,7 +171,9 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == SBRK && _taskTime >= 300) {
+    } else if (_taskName == STATE_TASK['MTG'] &&
+        _pjtId == STATE_PJT['MTG'] &&
+        _taskTime >= STATE_TIME['MTG']!.toInt()) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;
@@ -174,7 +181,29 @@ class _TaskInfoState extends State<TaskInfo> {
           _taskInfoCllorB = 67;
         });
       }
-    } else if (_taskName == LBRK && _taskTime >= 1800) {
+    } else if (_taskName == STATE_TASK['SBRK'] &&
+        _pjtId == STATE_PJT['BRK'] &&
+        _taskTime >= STATE_TIME['SBRK']!.toInt()) {
+      if (mounted) {
+        setState(() {
+          _taskInfoCllorR = 191;
+          _taskInfoCllorG = 67;
+          _taskInfoCllorB = 67;
+        });
+      }
+    } else if (_taskName == STATE_TASK['LBRK'] &&
+        _pjtId == STATE_PJT['BRK'] &&
+        _taskTime >= STATE_TIME['LBRK']!.toInt()) {
+      if (mounted) {
+        setState(() {
+          _taskInfoCllorR = 191;
+          _taskInfoCllorG = 67;
+          _taskInfoCllorB = 67;
+        });
+      }
+    } else if (_taskName == STATE_TASK['30BRK'] &&
+        _pjtId == STATE_PJT['BRK'] &&
+        _taskTime >= STATE_TIME['30BRK']!.toInt()) {
       if (mounted) {
         setState(() {
           _taskInfoCllorR = 191;

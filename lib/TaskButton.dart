@@ -20,7 +20,7 @@ class _TaskButtonState extends State<TaskButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 0.h, left: 4.w),
+      margin: EdgeInsets.only(top: 150.h, left: 4.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,17 +31,8 @@ class _TaskButtonState extends State<TaskButton> {
                 icon: Image.asset('images/work.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(WORK);
-                },
-              ),
-              SizedBox(
-                width: 100.w,
-              ),
-              IconButton(
-                icon: Image.asset('images/etc.png'),
-                iconSize: 270.h,
-                onPressed: () {
-                  setTogglTask(ETC);
+                  setTogglTask(STATE_TASK['WORK'].toString(),
+                      STATE_PJT['WORK']!.toInt());
                 },
               ),
               SizedBox(
@@ -51,7 +42,8 @@ class _TaskButtonState extends State<TaskButton> {
                 icon: Image.asset('images/mtg.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(MTG);
+                  setTogglTask(
+                      STATE_TASK['MTG'].toString(), STATE_PJT['MTG']!.toInt());
                 },
               ),
             ],
@@ -63,7 +55,8 @@ class _TaskButtonState extends State<TaskButton> {
                 icon: Image.asset('images/sbrk.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(SBRK);
+                  setTogglTask(STATE_TASK['SBRK'].toString(),
+                      STATE_PJT['SBRK']!.toInt());
                 },
               ),
               SizedBox(
@@ -73,17 +66,8 @@ class _TaskButtonState extends State<TaskButton> {
                 icon: Image.asset('images/lbrk.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(LBRK);
-                },
-              ),
-              SizedBox(
-                width: 100.w,
-              ),
-              IconButton(
-                icon: Image.asset('images/done.png'),
-                iconSize: 270.h,
-                onPressed: () {
-                  setTogglTask(DONE);
+                  setTogglTask(STATE_TASK['LBRK'].toString(),
+                      STATE_PJT['LBRK']!.toInt());
                 },
               ),
             ],
@@ -93,7 +77,7 @@ class _TaskButtonState extends State<TaskButton> {
     );
   }
 
-  Future<void> setTogglTask(String taskName) async {
+  Future<void> setTogglTask(String taskName, int pid) async {
     String url = 'https://api.track.toggl.com/api/v8/time_entries/start';
     Map<String, String> headers = {
       'content-type': 'application/json',
@@ -101,7 +85,32 @@ class _TaskButtonState extends State<TaskButton> {
           base64Encode(utf8.encode(dotenv.env['TOGGL_API_KEY']! + ':api_token'))
     };
     String body = json.encode({
-      'time_entry': {'description': taskName, 'created_with': 'time_tracker'}
+      'time_entry': {
+        'description': taskName,
+        'created_with': 'time_tracker',
+        "pid": pid
+      }
+    });
+    http.Response resp =
+        await http.post(Uri.parse(url), headers: headers, body: body);
+    if (resp.statusCode != 200) {
+      print(resp.body);
+    }
+  }
+
+  Future<void> stopTogglTask(String taskName, int pid) async {
+    String url = 'https://api.track.toggl.com/api/v8/time_entries/start';
+    Map<String, String> headers = {
+      'content-type': 'application/json',
+      'Authorization': 'Basic ' +
+          base64Encode(utf8.encode(dotenv.env['TOGGL_API_KEY']! + ':api_token'))
+    };
+    String body = json.encode({
+      'time_entry': {
+        'description': taskName,
+        'created_with': 'time_tracker',
+        "pid": pid
+      }
     });
     http.Response resp =
         await http.post(Uri.parse(url), headers: headers, body: body);
