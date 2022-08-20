@@ -14,10 +14,9 @@ const PJT_ID = {
 };
 
 const STATE_PJT = {
-  'WORK': 184292335, //WORK
-  'MTG': 184292345, //MTG
-  'SBRK': 184292339, //BRK
-  'LBRK': 184292339, //BRK
+  'WORK': 184292335,
+  'MTG': 184292345,
+  'BRK': 184292339,
 };
 
 const STATE_TIME = {
