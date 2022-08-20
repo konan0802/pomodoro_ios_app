@@ -71,11 +71,11 @@ class _TaskInfoState extends State<TaskInfo> {
           children: <Widget>[
             Container(
               height: 74.sp,
-              padding: EdgeInsets.only(top: 6.h, left: 10.w),
+              padding: EdgeInsets.only(left: 10.w),
               child: Text(
                 _taskName,
                 style: TextStyle(
-                  fontSize: 70.sp,
+                  fontSize: 63.sp,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
