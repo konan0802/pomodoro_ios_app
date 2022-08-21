@@ -42,8 +42,8 @@ class _TaskButtonState extends State<TaskButton> {
                 icon: Image.asset('images/sbrk.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(STATE_TASK['SBRK'].toString(),
-                      STATE_PJT['SBRK']!.toInt());
+                  setTogglTask(
+                      STATE_TASK['SBRK'].toString(), STATE_PJT['BRK']!.toInt());
                 },
               ),
             ],
@@ -66,8 +66,8 @@ class _TaskButtonState extends State<TaskButton> {
                 icon: Image.asset('images/lbrk.png'),
                 iconSize: 270.h,
                 onPressed: () {
-                  setTogglTask(STATE_TASK['LBRK'].toString(),
-                      STATE_PJT['LBRK']!.toInt());
+                  setTogglTask(
+                      STATE_TASK['LBRK'].toString(), STATE_PJT['BRK']!.toInt());
                 },
               ),
             ],
